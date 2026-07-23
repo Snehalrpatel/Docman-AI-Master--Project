@@ -4,13 +4,13 @@ set -eu
 NAMESPACE=${DEFAULT_NAMESPACE:-default}
 TEMPORAL_ADDRESS=${TEMPORAL_ADDRESS:-temporal:7233}
 
-echo "Waiting for Temporal server port to be available..."
-nc -z -w 10 $(echo $TEMPORAL_ADDRESS | cut -d: -f1) $(echo $TEMPORAL_ADDRESS | cut -d: -f2)
-echo 'Temporal server port is available'
 
 echo 'Waiting for Temporal server to be healthy...'
 max_attempts=3
-attempt=0
+attempt=0echo "Waiting for Temporal server port to be available..."
+nc -z -w 10 $(echo $TEMPORAL_ADDRESS | cut -d: -f1) $(echo $TEMPORAL_ADDRESS | cut -d: -f2)
+echo 'Temporal server port is available'
+
 
 until temporal operator cluster health --address $TEMPORAL_ADDRESS; do
   attempt=$((attempt + 1))
