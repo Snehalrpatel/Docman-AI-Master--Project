@@ -1,6 +1,8 @@
 #!/bin/sh
 set -eu
 
+
+
 NAMESPACE=${DEFAULT_NAMESPACE:-default}
 TEMPORAL_ADDRESS=${TEMPORAL_ADDRESS:-temporal:7233}
 
